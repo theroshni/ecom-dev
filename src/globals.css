@@ -1,0 +1,80 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 230 25% 98%;
+    --foreground: 230 25% 10%;
+    --card: 0 0% 100%;
+    --card-foreground: 230 25% 10%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 230 25% 10%;
+    --primary: 245 80% 60%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 230 20% 90%;
+    --secondary-foreground: 230 25% 10%;
+    --muted: 230 20% 95%;
+    --muted-foreground: 230 15% 45%;
+    --accent: 190 90% 50%;
+    --accent-foreground: 230 25% 10%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 230 20% 90%;
+    --input: 230 20% 90%;
+    --ring: 245 80% 60%;
+    --radius: 1.25rem;
+  }
+
+  .dark {
+    --background: 230 25% 4%;
+    --foreground: 230 25% 98%;
+    --card: 230 25% 7%;
+    --card-foreground: 230 25% 98%;
+    --popover: 230 25% 7%;
+    --popover-foreground: 230 25% 98%;
+    --primary: 245 80% 65%;
+    --primary-foreground: 230 25% 4%;
+    --secondary: 230 20% 15%;
+    --secondary-foreground: 230 25% 98%;
+    --muted: 230 20% 12%;
+    --muted-foreground: 230 15% 65%;
+    --accent: 190 90% 55%;
+    --accent-foreground: 230 25% 4%;
+    --destructive: 0 62% 30%;
+    --destructive-foreground: 230 25% 98%;
+    --border: 230 20% 15%;
+    --input: 230 20% 15%;
+    --ring: 245 80% 65%;
+  }
+}
+
+@layer utilities {
+  .glass {
+    @apply bg-white/40 dark:bg-black/40 backdrop-blur-xl border border-white/20 dark:border-white/10 shadow-[0_8px_32px_0_rgba(31,38,135,0.07)];
+  }
+  
+  .glass-card {
+    @apply glass rounded-[2rem] transition-all duration-300 hover:shadow-[0_8px_32px_0_rgba(31,38,135,0.15)] hover:scale-[1.02] active:scale-[0.98];
+  }
+
+  .animate-gradient {
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+  }
+
+  @keyframes gradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+}
+
+body {
+  @apply bg-background text-foreground selection:bg-primary/30;
+  background-image: radial-gradient(at 0% 0%, hsla(245, 80%, 60%, 0.05) 0, transparent 50%),
+                    radial-gradient(at 100% 0%, hsla(190, 90%, 50%, 0.05) 0, transparent 50%),
+                    radial-gradient(at 100% 100%, hsla(280, 80%, 60%, 0.05) 0, transparent 50%),
+                    radial-gradient(at 0% 100%, hsla(200, 90%, 50%, 0.05) 0, transparent 50%);
+  background-attachment: fixed;
+}
